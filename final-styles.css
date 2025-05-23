@@ -1,0 +1,261 @@
+body {
+    margin: 0;
+    font-family: "Urbanist", sans-serif;
+    background: linear-gradient(to bottom right, #FCEED4, #FFF8F0);
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+.dark-mode {
+    background: #000;
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    font-family: Castoro;
+}
+
+.navbar {
+    background-color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.dark-mode .navbar {
+    background-color: #000;
+    color: #fff;
+    border-bottom: 1px solid #333;
+}
+
+.dark-mode .container {
+    background-color: #000;
+    color: #fff;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, color 0.3s;
+}
+
+.dark-mode .card {
+    background: #000;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+.emoji-row {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.emoji-row button {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+.emoji-row button:hover {
+    transform: scale(1.5);
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.btn-row {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn.blue {
+    background-color: #358dbc;
+}
+
+.btn.green {
+    background-color: #358dbc;
+}
+
+.chart-placeholder {
+    height: 120px;
+    background: #f0f4ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+}
+
+.dark-mode .chart-placeholder {
+    background: #000;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+.toggle-btn {
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.btn.green:hover {
+        background-color: #2b7fac;
+    }
+/* .toggle-btn {
+    background: #3C1F1F;
+    color: #F9C74F;
+    color: #F8961E;
+    color: #90E0EF	;
+    color: #FFF8F0;
+    color: #FCEED4;
+    color: #0077B6
+} */
+
+.selected-emoji {
+    border: 2px solid #4CAF50;
+    border-radius: 50%;
+    background-color: #e0f7e9;
+}
+
+.mood-note-input {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+.selected {
+    border: 2px solid #4CAF50;
+    border-radius: 50%;
+    transform: scale(1.5);
+    transition: 0.2s;
+}
+
+#JournalEntry {
+    font-family: "Urbanist", sans-serif;
+}
+
+/* Light Theme (default) */
+.playlist-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fdfdfd;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Dark Theme */
+.dark-mode .playlist-card {
+    background-color: #1f1f1f;
+    border: 1px solid #444;
+    box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+    color: #f0f0f0;
+}
+
+.dark-mode .playlist-card p,
+.dark-mode .playlist-card h4 {
+    color: #ddd;
+}
+
+.dark-mode .playlist-card a {
+    color: #1DB954;
+}
+
+.emoji-row button.selected {
+    /* border: 2px solid #1DB954; */
+    transform: scale(1.1);
+    background-color: #eaffea;
+}
+
+.dark-mode .emoji-row button.selected {
+    /* border: 2px solid #1DB954; */
+    background-color: #263b2a;
+}
+
+.btn.green:hover {
+        background-color: #2b7fac;
+    }
+
+.btn-cancel:hover {
+        background-color: #cbc4c4;
+}
+
+
+.playlist-card {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border 0.3s ease;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    }
+
+    .playlist-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .post-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #2e7d32;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    }
+
+    .post-btn:hover {
+    background-color: #1b5e20;
+    }
+
+
+
+/* _______________TRIAL CSS_____________________________ */
+
+
+

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>MoodTrack Feed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Castoro:ital@0;1&family=DM+Serif+Display:ital@0;1&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="final-logo.png">
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Urbanist", sans-serif;
+        background: linear-gradient(to bottom right, #FCEED4, #FFF8F0);
+        color: #333;
+        transition: background 0.3s, color 0.3s;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .dark-mode {
+        background: #000;
+        color: #fff;
+    }
+
+    h1 {
+        font-family: Castoro;
+    }
+
+    .navbar {
+        background-color: #fff;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .dark-mode .navbar {
+        background-color: #000;
+        color: #fff;
+        border-bottom: 1px solid #333;
+    }
+
+    .main-layout {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 30px;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+
+    .sidebar {
+        width: 200px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        flex-shrink: 0;
+    }
+
+    .dark-mode .sidebar {
+        background: #111;
+        color: #fff;
+    }
+
+    .sidebar button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .btn.green {
+        background-color: #358dbc;
+    }
+
+    .btn.green:hover {
+        background-color: #2b7fac;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    /* .toggle-btn {
+    background: #3C1F1F;
+    color: #F9C74F;
+    color: #F8961E;
+    color: #90E0EF	;
+    color: #FFF8F0;
+    color: #FCEED4;
+    color: #0077B6
+    } */
+
+    .btn-side {
+        background-color: #e1dbdb;
+        padding: 10px 20px;
+        color: black;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .btn-side:hover {
+        background-color: #cbc4c4;
+    }
+
+    .newsfeed {
+        flex: 1;
+        max-width: 700px;
+        margin-top: 0;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .dark-mode .newsfeed {
+        background: #111;
+        color: #fff;
+    }
+
+    .post-card {
+        background: #f9f9f9;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        transition: background 0.3s, color 0.3s;
+        }
+
+    .dark-mode .post-card {
+        background: #1c1c1c;
+        color: #eee;
+        }
+
+    .post-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .journal-text {
+        font-size: 16px;
+        margin: 10px 0;
+        line-height: 1.5;
+        }
+
+        .post-footer {
+        display: flex;
+        gap: 15px;
+        font-size: 16px;
+        color: #888;
+        margin-top: 10px;
+        }
+
+        .post-footer button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        color: #888;
+        }
+
+        .dark-mode .post-footer button {
+        color: #ccc;
+        }
+
+        .playlist-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #fdfdfd;
+        margin-top: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        transition: background 0.3s, color 0.3s, border 0.3s;
+        }
+
+        .dark-mode .playlist-card {
+        background-color: #2a2a2a;
+        border: 1px solid #555;
+        color: #f0f0f0;
+        }
+
+        .playlist-card h4 {
+        margin-top: 0;
+        font-size: 16px;
+        }
+
+        .playlist-card a {
+        color: #1DB954;
+        text-decoration: none;
+        }
+
+        .playlist-card a:hover {
+        text-decoration: underline;
+        }
+
+        .toggle-btn {
+        background: #000;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 8px 12px;
+        cursor: pointer;
+        }
+    </style>
+    </head>
+    <body>
+
+    <nav class="navbar">
+    <div style="display: flex; gap: 15px; margin-right: auto;">
+        <h1>MoodTrack</h1>
+    </div>
+    <div style="display: flex; gap: 15px; margin-left: auto;">
+        <button id="theme-toggle" class="toggle-btn" onclick="toggleDarkMode()" title="Toggle Theme">🌙</button>
+        <button type="button" id="logout-btn" class="btn green" onclick="signout()">Sign Out</button>
+    </div>
+</nav>
+
+<div class="main-layout">
+    <div class="sidebar">
+    <button class="btn green"><a href="addJournal.html" style="text-decoration: none; color: white;">Add Mood Journal</a> </button>
+    <button class="btn-side">Explore</button>
+    <button class="btn-side">Bookmarks</button>
+    <button class="btn-side">Profile</button>
+</div>
+
+<section class="newsfeed">
+    <h3>Community Mood Journal</h3>
+
+    <div class="post-card">
+        <div class="post-header">
+            <img src="pfp1.jpg" alt="Avatar" class="avatar">
+            <div>
+            <strong>Alice</strong><br>
+            <small>😄 Happy • 5 mins ago</small>
+            </div>
+        </div>
+        <p class="journal-text">Had an amazing day at the park. Sunshine, good coffee, and a walk with my dog 🐾</p>
+        <div class="playlist-card">
+            <h4>Playlist Recommendation</h4>
+            <p>Chill Vibes ☀️</p>
+            <a href="#" target="_blank">Listen on Spotify</a>
+        </div>
+        <div class="post-footer">
+            <button>❤️ 4</button>
+            <button>💬 1</button>
+        </div>
+        </div>
+
+        <div class="post-card">
+        <div class="post-header">
+            <img src="pfp2.jpg" alt="Avatar" class="avatar">
+        <div>
+        <strong>Layla</strong><br>
+        <small>😄 Happy • 1 hour ago</small>
+        </div>
+        </div>
+    <p class="journal-text">Today was honestly perfect. Got some good news and treated myself to bubble tea 🧋</p>
+
+    <div class="playlist-card">
+        <h4>Playlist Recommendation</h4>
+        <p>Feel-Good Pop 🎉</p>
+        <a href="#" target="_blank">Listen on Spotify</a>
+    </div>
+
+    <div class="post-footer">
+        <button>❤️ 6</button>
+        <button>💬 2</button>
+    </div>
+    </div>
+
+
+    <div class="post-card">
+    <div class="post-header">
+        <img src="pfp3.jpg" alt="Avatar" class="avatar">
+        <div>
+            <strong>Chris</strong><br>
+            <small>😐 Neutral • 2 hours ago</small>
+        </div>
+    </div>
+    <p class="journal-text">Just a regular day. Nothing too exciting or bad. Got a lot of small stuff done though.</p>
+
+    <div class="playlist-card">
+        <h4>Playlist Recommendation</h4>
+        <p>Lo-Fi Beats ☕</p>
+        <a href="#" target="_blank">Listen on Spotify</a>
+    </div>
+
+        <div class="post-footer">
+            <button>❤️ 3</button>
+            <button>💬 1</button>
+        </div>
+    </div>
+
+    <div class="post-card">
+    <div class="post-header">
+        <img src="pfp4.jpg" alt="Avatar" class="avatar">
+        <div>
+            <strong>Samira</strong><br>
+            <small>😢 Depressed • 3 hours ago</small>
+        </div>
+    </div>
+    <p class="journal-text">Struggling to find motivation. Everything feels a bit overwhelming lately.</p>
+
+        <div class="playlist-card">
+        <h4>Playlist Recommendation</h4>
+        <p>Gentle Healing 🎧</p>
+        <a href="#" target="_blank">Listen on Spotify</a>
+        </div>
+
+        <div class="post-footer">
+        <button>❤️ 7</button>
+        <button>💬 5</button>
+        </div>
+    </div>
+    </section>
+</div>
+
+<script>
+    let isDark = false;
+    let isLoggedIn = true;
+
+    function updateAuthUI() {
+        document.getElementById("login-btn").style.display = isLoggedIn ? "none" : "inline-block";
+        document.getElementById("signup-btn").style.display = isLoggedIn ? "none" : "inline-block";
+        document.getElementById("logout-btn").style.display = isLoggedIn ? "inline-block" : "none";
+    }
+
+    function login() {
+        isLoggedIn = true;
+        alert("Logged in!");
+        updateAuthUI();
+    }
+
+    function signup() {
+        isLoggedIn = true;
+        alert("Signed up and logged in!");
+        updateAuthUI();
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const btn = document.getElementById("theme-toggle");
+        btn.innerHTML = document.body.classList.contains('dark-mode') ? "☀️" : "🌙";
+    }
+
+    function signout() {
+        alert("Signed out!");
+        window.location.href = "index.html";
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Signup Test</title>
+</head>
+<body>
+  <form id="signupForm">
+    <input type="text" name="name" value="testuser" />
+    <input type="email" name="email" value="test@example.com" />
+    <input type="password" name="password" value="1234" />
+    <button type="submit">Sign Up</button>
+  </form>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = this.name.value.trim();
+        const email = this.email.value.trim();
+        const password = this.password.value;
+
+        console.log("Sending signup data:", { name, email, password });
+
+        fetch("http://localhost:3000/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password })
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log("Server response:", data);
+            if (data.toLowerCase().includes("success")) {
+                alert("Success!");
+            } else {
+                alert(data || "Signup failed.");
+            }
+        })
+        .catch(error => {
+            console.error("Signup error:", error);
+            alert("Sign Up failed: " + error.message);
+        });
+    });
+  </script>
+</body>
+</html>
